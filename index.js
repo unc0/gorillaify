@@ -62,7 +62,7 @@ function compile(file, src, callback) {
         map.setProperty('sourceRoot', "");
         map.setProperty('sourcesContent', [src]);
 
-        callback(null, convert.removeComments(data) + '\n' + map.toComment());
+        callback(null, convert.removeMapFileComments(data) + '\n' + map.toComment());
         fs.unlink(opt.sourceMap);
         fs.unlink(opt.output);
       });
