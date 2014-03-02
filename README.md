@@ -57,6 +57,14 @@ $ node bundle.js
 555
 ```
 
+if you are ready to bundle codes for production:
+
+```
+$ browserify -t gorillaify/no-debug foo.gs > bundle.js
+```
+
+this will disable generating source map, and using gorillascript's bare mode.
+
 # install
 
 With [npm](https://npmjs.org) do:
