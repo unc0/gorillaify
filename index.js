@@ -6,42 +6,12 @@ var convert = require('convert-source-map');
 var fs = require('fs');
 var path = require('path');
 
-function isGorilla (file) {
-  return (/\.gs$/).test(file);
-}
-
-function ParseError(error, src, file) {
-  /* Creates a ParseError from a Gorilascript SyntaxError
-   modeled after substack's syntax-error module */
-  SyntaxError.call(this);
-
-  this.message = error.message;
-
-  this.line = error.line;
-  this.column = error.column;
-
-  this.annotated = [
-    file + ':' + this.line,
-    src.split('\n')[this.line - 1],
-    new Array(this.column).join(' ') + '^',
-    'ParseError: ' + this.message
-  ].join('\n');
-}
-
-ParseError.prototype = Object.create(SyntaxError.prototype);
-
-ParseError.prototype.toString = function () {
-  return this.annotated;
-};
-
-ParseError.prototype.inspect = function () {
-  return this.annotated;
-};
+var helper = require('./helper');
 
 function compile(file, src, callback) {
   var onFailure = function(err){
     if (err) {
-      callback(new ParseError(err, src, file));
+      callback(new helper.ParseError(err, src, file));
     }
   };
   // gorillascript cannot produce source map in stream way
@@ -72,7 +42,7 @@ function compile(file, src, callback) {
 }
 
 function gorillaify(file) {
-  if (!isGorilla(file)) { return through(); }
+  if (!helper.isGorilla(file)) { return through(); }
 
   var write = function(buf) {
     data += buf;
@@ -93,6 +63,6 @@ function gorillaify(file) {
 }
 
 gorillaify.compile = compile;
-gorillaify.isGorilla = isGorilla;
+gorillaify.isGorilla = helper.isGorilla;
 
 module.exports = gorillaify;
