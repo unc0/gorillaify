@@ -21,10 +21,12 @@
     "url": "https://github.com/unc0/gorillaify.git"
   },
   "keywords": [
-    "gorillascript"
+    "gorillascript",
+    "browserify",
+    "transform"
   ],
-  "author": "browserify",
-  "license": "transform",
+  "author": "unc0",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/unc0/gorillaify/issues"
   },
