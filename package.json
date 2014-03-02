@@ -1,0 +1,32 @@
+{
+  "name": "gorillaify",
+  "version": "0.1.0",
+  "description": "browserify v2 plugin for gorillascript with support for mixed .js and .gs files",
+  "main": "index.js",
+  "dependencies": {
+    "convert-source-map": "~0.3.3",
+    "gorillascript": "~0.9.10",
+    "tmp": "~0.0.23",
+    "through": "~2.3.4"
+  },
+  "devDependencies": {
+    "browserify": "~3.31.2",
+    "tap": "~0.4.8"
+  },
+  "scripts": {
+    "test": "tap test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unc0/gorillaify.git"
+  },
+  "keywords": [
+    "gorillascript"
+  ],
+  "author": "browserify",
+  "license": "transform",
+  "bugs": {
+    "url": "https://github.com/unc0/gorillaify/issues"
+  },
+  "homepage": "https://github.com/unc0/gorillaify"
+}
